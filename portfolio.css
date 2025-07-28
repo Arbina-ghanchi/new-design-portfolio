@@ -331,8 +331,10 @@ a:focus {
 
 .header .content-inner {
     padding: 100px 30px;
-    background: url(../img/profile.png) right bottom no-repeat;
-    background-size: contain;
+    /* background: url(https://i.pinimg.com/736x/93/42/99/934299c383c4b3cf457a8f0d0f7e1d40.jpg) right bottom no-repeat; */
+    /* background-size: contain; */
+        text-align: center;
+
 }
 
 .header p {

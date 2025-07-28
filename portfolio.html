@@ -15,6 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link
@@ -32,6 +33,11 @@
     <!-- Template Stylesheet -->
     <link href="portfolio.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Aos css -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+<!-- Aos js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
   </head>
 
   <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -102,10 +108,10 @@
           ></a>
         </div>
       </div>
-      <div class="content">
+      <div class="content" >
         <!-- Header Start -->
         <div class="header" style="height: 100vh" id="header">
-          <div class="content-inner">
+          <div class="content-inner" >
             <p>I'm</p>
             <h1>Arbina Ghanchi</h1>
             <h2></h2>
@@ -135,13 +141,13 @@
               <h2>About Me</h2>
             </div>
             <div class="row align-items-center">
-              <div class="col-md-6 col-lg-5">
+              <div class="col-md-6 col-lg-5" data-aos="fade-right" >
                 <img
                   src="https://i.pinimg.com/736x/10/14/e2/1014e2ce58e934b495b7ee46e056da39.jpg"
                   alt="Arbina-Ghanchi-Image"
                 />
               </div>
-              <div class="col-md-6 col-lg-7">
+              <div class="col-md-6 col-lg-7" data-aos="fade-left" data-aos-delay="200">
                 <p>
                   I'm a passionate Full Stack Developer with hands-on experience
                   in building responsive web applications using technologies
@@ -763,6 +769,7 @@
           </div>
         </div>
         <!-- Footer Start -->
+          
       </div>
     </div>
 
@@ -783,5 +790,58 @@
 
     <!-- Template Javascript -->
     <script src="portfolio.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+function addTransitionOverlay() {
+  const overlay = document.createElement("div");
+  overlay.classList.add("page-transition-overlay");
+  document.body.appendChild(overlay);
+  return overlay;
+}
+
+function animateTransitionIn() {
+  const overlay = addTransitionOverlay();
+  return gsap.to(overlay, {
+    scaleY: 1,
+    duration: 0.6,
+    ease: "power2.inOut"
+  });
+}
+
+function animateTransitionOut() {
+  const overlay = document.querySelector(".page-transition-overlay");
+  return gsap.to(overlay, {
+    scaleY: 0,
+    duration: 0.6,
+    ease: "power2.inOut",
+    onComplete: () => overlay.remove()
+  });
+}
+
+// Animate on page load
+window.addEventListener("DOMContentLoaded", () => {
+  animateTransitionOut();
+});
+
+// Handle link clicks
+document.querySelectorAll("a.transition-link").forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+    if (href && !href.startsWith("#")) {
+      e.preventDefault();
+      animateTransitionIn().then(() => {
+        window.location.href = href;
+      });
+    }
+  });
+});
+ AOS.init({
+  duration: 1000,
+  once: true
+});
+</script>
+
+  </body>
   </body>
 </html>
